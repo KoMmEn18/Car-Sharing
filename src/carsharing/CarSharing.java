@@ -26,6 +26,17 @@ public class CarSharing {
     }
 
     private void printActionMenu() {
+        printMenuHeader();
+        printMenuBody();
+    }
+
+    private void printMenuHeader() {
+        if (context.getCurrentState() == State.COMPANY_MENU) {
+            System.out.println("'" + context.getCompany().getName() + "' company");
+        }
+    }
+
+    private void printMenuBody() {
         context.getCurrentState()
                 .getActions()
                 .forEach((key, value) -> System.out.println(key + ". " + value));

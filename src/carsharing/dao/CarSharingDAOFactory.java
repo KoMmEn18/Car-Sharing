@@ -25,11 +25,25 @@ public class CarSharingDAOFactory extends DAOFactory {
         return new CarSharingCompanyDAO();
     }
 
+    @Override
+    public CarDAO getCarDAO() {
+        return new CarSharingCarDAO();
+    }
+
     private void createTables() {
         String query = """
             CREATE TABLE IF NOT EXISTS `company` (
                 `id` INT PRIMARY KEY AUTO_INCREMENT,
                 `name` VARCHAR(255) UNIQUE NOT NULL
+            );
+            
+            CREATE TABLE IF NOT EXISTS `car` (
+                `id` INT PRIMARY KEY AUTO_INCREMENT,
+                `name` VARCHAR(255) UNIQUE NOT NULL,
+                `company_id` INT NOT NULL,
+                CONSTRAINT company_fk
+                FOREIGN KEY (company_id) 
+                REFERENCES company(id)
             );
         """;
 

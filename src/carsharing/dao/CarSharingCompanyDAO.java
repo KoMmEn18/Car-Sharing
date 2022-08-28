@@ -14,7 +14,8 @@ public class CarSharingCompanyDAO implements CompanyDAO {
     @Override
     public List<Company> getAllCompanies() {
         String query = """
-            SELECT * FROM `company`
+            SELECT * 
+            FROM `company`
             ORDER BY `id`
         """;
 
@@ -51,17 +52,5 @@ public class CarSharingCompanyDAO implements CompanyDAO {
         }
 
         return index;
-    }
-
-    @Override
-    public boolean updateCompany(Company company) {
-        //TODO implementMethod
-        return false;
-    }
-
-    @Override
-    public boolean deleteCompany(Company company) {
-        //TODO implementMethod
-        return false;
     }
 }

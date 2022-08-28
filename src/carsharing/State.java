@@ -8,7 +8,8 @@ import java.util.Map;
 
 public enum State {
     MAIN_MENU(getMainMenuActions()),
-    MANAGER_MENU(getManagerMenuActions());
+    MANAGER_MENU(getManagerMenuActions()),
+    COMPANY_MENU(getCompanyMenuActions());
 
     private final Map<Integer, Action> actions;
 
@@ -32,6 +33,15 @@ public enum State {
         var map = new LinkedHashMap<Integer, Action>();
         map.put(1, new ListCompaniesAction());
         map.put(2, new CreateCompanyAction());
+        map.put(0, new BackAction());
+
+        return Collections.unmodifiableMap(map);
+    }
+
+    private static Map<Integer, Action> getCompanyMenuActions() {
+        var map = new LinkedHashMap<Integer, Action>();
+        map.put(1, new ListCarsAction());
+        map.put(2, new CreateCarAction());
         map.put(0, new BackAction());
 
         return Collections.unmodifiableMap(map);
