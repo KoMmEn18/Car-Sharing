@@ -18,7 +18,7 @@ public class CreateCompanyAction implements Action {
             System.out.println("Name is empty. Try again");
             name = scanner.nextLine();
         }
-        if(companyDAO.insertCompany(name) > 0) {
+        if (companyDAO.insertCompany(name) > 0) {
             System.out.println("The company was created!");
         }
     }
