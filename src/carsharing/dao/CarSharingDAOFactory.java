@@ -1,5 +1,7 @@
 package carsharing.dao;
 
+import carsharing.models.Customer;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,6 +32,11 @@ public class CarSharingDAOFactory extends DAOFactory {
         return new CarSharingCarDAO();
     }
 
+    @Override
+    public CustomerDAO getCustomerDAO() {
+        return new CarSharingCustomerDAO();
+    }
+
     private void createTables() {
         String query = """
             CREATE TABLE IF NOT EXISTS `company` (
@@ -44,6 +51,15 @@ public class CarSharingDAOFactory extends DAOFactory {
                 CONSTRAINT company_fk
                 FOREIGN KEY (company_id) 
                 REFERENCES company(id)
+            );
+            
+            CREATE TABLE IF NOT EXISTS `customer` (
+                `id` INT PRIMARY KEY AUTO_INCREMENT,
+                `name` VARCHAR(255) UNIQUE NOT NULL,
+                `rented_car_id` INT DEFAULT NULL,
+                CONSTRAINT rented_car_fk
+                FOREIGN KEY (rented_car_id)
+                REFERENCES car(id)
             );
         """;
 

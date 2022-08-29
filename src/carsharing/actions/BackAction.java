@@ -8,7 +8,7 @@ public class BackAction implements Action {
     public void execute(Context context) {
         State state = context.getCurrentState();
         State newState = switch (state) {
-            case MAIN_MENU, MANAGER_MENU -> State.MAIN_MENU;
+            case MAIN_MENU, MANAGER_MENU, CUSTOMER_MENU -> State.MAIN_MENU;
             case COMPANY_MENU -> State.MANAGER_MENU;
         };
         context.setCurrentState(newState);

@@ -1,24 +1,14 @@
 package carsharing.models;
 
-public class Car {
-    private int id;
-    private String name;
+public class Car extends Entity {
+    private Company company;
 
-    public Car(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Car(int id, String name, Company company) {
+        super(id, name);
+        this.company = company;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return getId() + ". " + getName();
+    public Company getCompany() {
+        return company;
     }
 }
